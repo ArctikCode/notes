@@ -39,8 +39,8 @@
                     <a class="nav-link" href="#">Contact Us</a>
                 </li>
             </ul>
-            <button class="btn btn-outline-light my-2 my-sm-0" href="#" data-toggle="modal" data-target="#logInForm"
-                type="button">Login</button>
+            <button class="btn btn-outline-light my-2 my-sm-0" href="#" data-toggle="modal" data-target="#logInModal"
+                type=" button">Login</button>
         </div>
     </nav>
 
@@ -121,30 +121,21 @@
 
 
             <!-- LOGIN FORM -->
-            <form method="post" id="signUpForm">
-                <div class=" modal" id="logInForm" tabindex="-1" role="dialog">
+            <form method="post" id="logInForm">
+                <div class=" modal" id="logInModal" tabindex="-1" role="dialog">
                     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title">Log into your Notes personnal account. </h5>
+                                <h5 class="modal-title">Log in to your Notes personnal account. </h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             <!-- LOGIN FORM -->
-                            <div class="modal-body">
+                            <div class="modal-body logInModal">
                                 <!-- empty div for the reception of the error or information message -->
-                                <div id="signUpMessage"></div>
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="signUpSpan input-group-text" id="name">
-                                            <ion-icon class="iconName" name="person-circle-outline"> </ion-icon>
-                                        </span>
-                                    </div>
-                                    <label for="username" class="sr-only">Name:</label>
-                                    <input type="text" class="form-control" placeholder="Name" aria-label="Name"
-                                        aria-describedby="name" id="username" maxlength="30">
-                                </div>
+                                <div id="logInMessage"></div>
+                                <!-- Login email -->
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <span class="signUpSpan input-group-text" id="email">@</span>
@@ -153,26 +144,32 @@
                                     <input type="email" class="form-control" placeholder="Email" aria-label="Email"
                                         aria-describedby="email" id="loginemail" maxlength="50">
                                 </div>
+                                <!-- Password login -->
                                 <div class="input-group mb-3">
                                     <div class="signUpSpan input-group-prepend">
                                         <span class="signUpSpan input-group-text" id="password">&#128274</span>
                                     </div>
                                     <label for="password" class="sr-only">Password:</label>
-                                    <input type="password" class="form-control" placeholder="Enter a password"
+                                    <input type="password" class="form-control" placeholder="Password"
                                         aria-label="Password" aria-describedby="password" id="password" maxlength="30">
                                 </div>
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="signUpSpan input-group-text" id="confirmPassword">&#128274</span>
-                                    </div>
-                                    <label for="confirmPassword" class="sr-only">Confirm Password:</label>
-                                    <input type="password" class="form-control" placeholder="Confirm password"
-                                        aria-label="Username" aria-describedby="confirmPassword" id="confirmPassword"
-                                        maxlength="30">
-                                </div>
                             </div>
-                            <div class="modal-footer">
-                                <button type="submit" name="signUp" class="btn btn-secondary">Sign Up</button>
+                            <div class="loginCheckBoxContainer">
+                                <!-- remember me checkbox -->
+                                <div class="form-check loginCheck">
+                                    <input type="checkbox" class="form-check-input">
+                                    <label class="form-check-label" for="rememberMe">Remember Me</label>
+                                </div>
+                                <!-- Forgot password link -->
+                                <a href="#" id="forgotPassword">Forgot Password ?</a>
+                            </div>
+
+                            <!-- login and cancel button -->
+                            <div class="modal-footer loginFooter">
+                                <button type="submit" name="signUp" id="registrationButton"
+                                    class="btn btn-outlined-secondary">Not registered ?</br>
+                                    Create your account here</button>
+                                <button type="submit" name="login" class="btn btn-secondary">Login</button>
                                 <button type="button" class="btn btn-outlined-secondary"
                                     data-dismiss="modal">Cancel</button>
                             </div>
@@ -182,6 +179,8 @@
             </form>
         </div>
     </div>
+
+
     <!-- FOOTER -->
     <div class="footer text-secondary">
         <div class="container">

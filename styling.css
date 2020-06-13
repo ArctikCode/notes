@@ -63,6 +63,36 @@ body {
     min-width: 70px;
 }
 
+/* LOGIN form */
+.logInModal {
+    padding-bottom: 0px !important;
+}
+
+.loginFooter {
+    position: relative;
+}
+
+.loginCheckBoxContainer {
+    position: relative;
+}
+
+#forgotPassword {
+    float: right;
+    margin-right: 1rem;
+}
+
+.loginCheck {
+    display: inline !important;
+    float: left;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+}
+
+button#registrationButton {
+    font-size: small !important;
+    margin-right: auto;
+}
+
 /* MediaQuery */
 @media (max-width: 400px) {
     #title {
