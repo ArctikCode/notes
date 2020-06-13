@@ -161,13 +161,15 @@
                                     <label class="form-check-label" for="rememberMe">Remember Me</label>
                                 </div>
                                 <!-- Forgot password link -->
-                                <a href="#" id="forgotPassword">Forgot Password ?</a>
+                                <a style="cursor:pointer; color:blue;" id="forgotPassword" data-dismiss="modal"
+                                    data-target="#forgotPasswordModal" data-toggle="modal">Forgot Password ?</a>
                             </div>
 
                             <!-- login and cancel button -->
                             <div class="modal-footer loginFooter">
-                                <button type="submit" name="signUp" id="registrationButton"
-                                    class="btn btn-outlined-secondary">Not registered ?</br>
+                                <button type="button" data-target="#signUpModal" data-dismiss="modal"
+                                    data-toggle="modal" id="registrationButton" class="btn btn-outlined-secondary">Not
+                                    registered ?</br>
                                     Create your account here</button>
                                 <button type="submit" name="login" class="btn btn-secondary">Login</button>
                                 <button type="button" class="btn btn-outlined-secondary"
@@ -177,6 +179,50 @@
                     </div>
                 </div>
             </form>
+
+            <!-- FORGOT PASSWORD <FORM> -->
+            <form method="post" id="forgotPasswordForm">
+                <div class=" modal" id="forgotPasswordModal" tabindex="-1" role="dialog">
+                    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" style="width:100%;">Forgot your password? </br>Please enter your
+                                    email adress :
+                                </h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <!-- LOGIN FORM -->
+                            <div class="modal-body forgotPasswordModal">
+                                <!-- empty div for the reception of the error or information message -->
+                                <div id="forgotPasswordMessage"></div>
+                                <!-- Login email -->
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="forgotPasswordSpan input-group-text" id="email">@</span>
+                                    </div>
+                                    <label for="forgotPasswordemail" class="sr-only">Email:</label>
+                                    <input type="email" class="form-control" placeholder="Email" aria-label="Email"
+                                        aria-describedby="email" id="loginemail" maxlength="50">
+                                </div>
+
+                            </div>
+
+                            <!-- submit and cancel button -->
+                            <div class="modal-footer loginFooter">
+                                <button type="submit" name="login" class="btn btn-secondary">Send me my
+                                    password</button>
+                                <button type="button" class="btn btn-outlined-secondary"
+                                    data-dismiss="modal">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+
+
         </div>
     </div>
 

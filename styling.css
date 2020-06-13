@@ -77,6 +77,7 @@ body {
 }
 
 #forgotPassword {
+    /*In the lessons Issam is using a bootstrap class called 'pull-right' or 'pull-left'*/
     float: right;
     margin-right: 1rem;
 }
