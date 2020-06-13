@@ -1,0 +1,74 @@
+/*Background image*/
+/* Photo by Daria Obymaha from Pexels */
+/*icons*/
+
+.iconName {
+    font-size: 22px !important;
+}
+
+body {
+
+    /* background image */
+    background: url(image/background2.jpg) no-repeat;
+    background-position: 25% 75%;
+    background-attachment: fixed;
+    background-size: cover;
+    /* page font */
+    font-family: 'Josefin Slab', serif;
+}
+
+
+
+/*Jumbotron styling*/
+.jumbotron {
+
+    min-width: 160px;
+    background-color: rgba(233, 236, 239, 0.7);
+    text-align: center;
+    margin: 5% 20%;
+}
+
+.lead {
+    margin-top: 1em;
+}
+
+/* button styling */
+.signup {
+    margin-top: 2em;
+}
+
+/*Container styling*/
+#mainContainer {
+    position: relative;
+    height: 100vh;
+
+}
+
+/* footer styling */
+.footer {
+    position: bottom;
+    width: 100%;
+    text-align: center;
+    padding-top: 20px;
+
+}
+
+.footer p {
+    margin-bottom: 0px !important;
+}
+
+/* Sign up form styling */
+.signUpSpan {
+    justify-content: center;
+    min-width: 70px;
+}
+
+/* MediaQuery */
+@media (max-width: 400px) {
+    #title {
+        font-size: larger;
+    }
+
+
+
+}
