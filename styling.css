@@ -77,7 +77,20 @@ button#allNote,
     display: none;
 }
 
+/*Profile page styling*/
+#profileContainer {
+    position: relative;
+    height: 100vh;
+    margin-top: 5vh;
 
+}
+
+
+.profileTable {
+    font-size: 2rem;
+    border: none !important;
+    text-decoration: none;
+}
 
 textarea {
     width: 100%;
