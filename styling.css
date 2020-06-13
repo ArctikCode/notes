@@ -1,6 +1,13 @@
 /*Background image*/
 /* Photo by Daria Obymaha from Pexels */
+
+/*importing the fonts*/
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Slab:ital,wght@0,300;0,700;1,400&display=swap');
+
 /*icons*/
+.logo {
+    height: 3rem;
+}
 
 .iconName {
     font-size: 22px !important;
@@ -15,6 +22,14 @@ body {
     background-size: cover;
     /* page font */
     font-family: 'Josefin Slab', serif;
+}
+
+/*NAVBAR Styling*/
+#userInfo {
+    color: white;
+    padding: 1rem;
+    padding-left: 0px;
+    margin-bottom: 0px !important;
 }
 
 
@@ -42,6 +57,35 @@ body {
     position: relative;
     height: 100vh;
 
+}
+
+/*Notes Container styling*/
+#noteContainer {
+    position: relative;
+    height: 100vh;
+    margin-top: 5vh;
+}
+
+/*Notes editing buttons styling*/
+.buttonDiv {
+    margin-bottom: 2rem;
+}
+
+button#doneNote,
+button#allNote,
+#notePad {
+    display: none;
+}
+
+
+
+textarea {
+    width: 100%;
+    max-width: 100%;
+    font-size: 1.25rem;
+    line-height: 1.5em;
+    border-left-width: 1.5rem;
+    background-color: rgba(233, 236, 239, 0.7);
 }
 
 /* footer styling */

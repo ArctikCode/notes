@@ -11,6 +11,7 @@
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <!-- CSS file -->
     <link rel="stylesheet" href="styling.css">
+    <link rel="icon" type="image/gif" href="image/logo.png" />
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@600&display=swap" rel="stylesheet">
     <title>Notes</title>
 
@@ -21,7 +22,7 @@
     <!-- Navigation bar -->
     <nav class="navbar navbar-expand-lg navbar-dark " style="background-color: rgba(52,58,64,0.8);">
 
-        <a class="navbar-brand font-weight-bold" href="#">Notes</a>
+        <a class="navbar-brand font-weight-bold " href="#"><img class="logo" src="image/logo.png" alt="Notes"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -49,7 +50,9 @@
     <div class="container" id="mainContainer">
         <!-- JUMBOTRON with Sign Up Button -->
         <div class="jumbotron" id="myContainer">
-            <h1 id="title" class="display-4">Online Notes App</h1>
+            <h1 id="title" class="display-4">Online Notes App
+                </br> <img class="logo" src="image/logo.png" alt="Notes"></br>
+            </h1>
             <p class="h2 mt-4">Your notes with you, wherever you go.</p>
             <hr class="my-4">
             <p class="h5">Easy to use, protects all your notes.</p>
@@ -171,7 +174,7 @@
                                     data-toggle="modal" id="registrationButton" class="btn btn-outlined-secondary">Not
                                     registered ?</br>
                                     Create your account here</button>
-                                <button type="submit" name="login" class="btn btn-secondary">Login</button>
+                                <button type="submit" name="login" class="btn btn-secondary">Log In</button>
                                 <button type="button" class="btn btn-outlined-secondary"
                                     data-dismiss="modal">Cancel</button>
                             </div>
@@ -245,7 +248,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
     </script>
-    //icon library
+    <!-- //icon library -->
     <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
 </body>
 
