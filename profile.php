@@ -56,19 +56,19 @@
                 <h2>Your Profile Settings :</h2></br>
                 <div>
                     <table class="table table-hover profileTable">
-                        <tr>
+                        <tr data-target="#updateUserName" data-toggle="modal" style="cursor:pointer">
                             <td>
                                 <ion-icon name="person-circle-outline" size="large"> </ion-icon>
                             </td>
                             <td>Joe LaFritte</td>
                         </tr>
-                        <tr>
+                        <tr data-target="#updateEmail" data-toggle="modal" style="cursor:pointer">
                             <td>@</td>
                             <td>Jo@patate.fr</td>
                         </tr>
-                        <tr>
+                        <tr data-target="#updatePassword" data-toggle="modal" style="cursor:pointer">
                             <td>&#128274</td>
-                            <td>poilauné</td>
+                            <td>oooooooooooo</td>
                         </tr>
                     </table>
                 </div>
@@ -78,8 +78,134 @@
 
     </div>
 
+    <!-- Update FORMS -->
+    <!-- UPDATE NAME -->
+    <form method="post" id="updateUserNameForm">
+        <div class=" modal" id="updateUserName" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Which new name would you like to use ? </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <!-- LOGIN FORM -->
+                    <div class="modal-body updateNameModal">
+                        <!-- empty div for the reception of the error or information message -->
+                        <div id="updateNameMessage"></div>
+                        <!-- Update Name-->
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="signUpSpan input-group-text" id="name">
+                                    <ion-icon class="iconName" name="person-circle-outline"> </ion-icon>
+                                </span>
+                            </div>
+                            <label for="username" class="sr-only">Name :</label>
+                            <input type="text" class="form-control" placeholder="New Name" aria-label="Name"
+                                aria-describedby="name" id="username" maxlength="30">
+                        </div>
+                    </div>
 
+                    <!-- login and cancel button -->
+                    <div class="modal-footer loginFooter">
+                        <button type="submit" name="login" class="btn btn-secondary">Save</button>
+                        <button type="button" class="btn btn-outlined-secondary" data-dismiss="modal">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
 
+    <!-- UPDATE EMAIL -->
+    <form method="post" id="updateEmailForm">
+        <div class=" modal" id="updateEmail" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Which new Email would you like to use ? </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <!-- LOGIN FORM -->
+                    <div class="modal-body updateEmailModal">
+                        <!-- empty div for the reception of the error or information message -->
+                        <div id="updateEmailMessage"></div>
+                        <!-- Update Name-->
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="signUpSpan input-group-text" id="email">@</span>
+                            </div>
+                            <label for="loginemail" class="sr-only">Email:</label>
+                            <input type="email" class="form-control" placeholder="Enter a new Email address"
+                                aria-label="Email" aria-describedby="email" id="loginemail" maxlength="50">
+                        </div>
+                    </div>
+
+                    <!-- login and cancel button -->
+                    <div class="modal-footer loginFooter">
+                        <button type="submit" name="login" class="btn btn-secondary">Save</button>
+                        <button type="button" class="btn btn-outlined-secondary" data-dismiss="modal">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <!-- UPDATE Password -->
+    <form method="post" id="updatePasswordForm">
+        <div class=" modal" id="updatePassword" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Set up your new Password : </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <!-- Password Update FORM -->
+                    <div class="modal-body updatePasswordModal">
+                        <!-- empty div for the reception of the error or information message -->
+                        <div id="updatePasswordMessage"></div>
+                        <!-- Update Password-->
+                        <div class="input-group mb-3">
+                            <div class="signUpSpan input-group-prepend">
+                                <span class="signUpSpan input-group-text" id="password">&#128274</span>
+                            </div>
+                            <label for="currentPassword" class="sr-only"> Current Password:</label>
+                            <input type="password" class="form-control" placeholder="Enter your current password"
+                                aria-label="currentPassword" aria-describedby="currentPassword" id="currentPassword"
+                                maxlength="30">
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="signUpSpan input-group-prepend">
+                                <span class="signUpSpan input-group-text" id="password">&#128274</span>
+                            </div>
+                            <label for="newPassword" class="sr-only">New Password:</label>
+                            <input type="password" class="form-control" placeholder="Enter a new password"
+                                aria-label="newPassword" aria-describedby="newPassword" id="newPassword" maxlength="30">
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="signUpSpan input-group-prepend">
+                                <span class="signUpSpan input-group-text" id="password">&#128274</span>
+                            </div>
+                            <label for="ConfirmNewPassword" class="sr-only">Confirm New Password:</label>
+                            <input type="password" class="form-control" placeholder="Confirm your new password"
+                                aria-label="ConfirmNewPassword" aria-describedby="ConfirmNewPassword"
+                                id="ConfirmNewPassword" maxlength="30">
+                        </div>
+                    </div>
+
+                    <!-- login and cancel button -->
+                    <div class="modal-footer loginFooter">
+                        <button type="submit" name="login" class="btn btn-secondary">Save</button>
+                        <button type="button" class="btn btn-outlined-secondary" data-dismiss="modal">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
     <!-- FOOTER -->
     <div class="footer text-secondary">
         <div class="container">
