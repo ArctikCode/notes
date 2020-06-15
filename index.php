@@ -76,6 +76,7 @@
                             <div class="modal-body">
                                 <!-- empty div for the reception of the error or information message -->
                                 <div id="signUpMessage"></div>
+
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <span class="signUpSpan input-group-text" id="name">
@@ -84,23 +85,26 @@
                                     </div>
                                     <label for="username" class="sr-only">Name:</label>
                                     <input type="text" class="form-control" placeholder="Name" aria-label="Name"
-                                        aria-describedby="name" id="username" maxlength="30">
+                                        aria-describedby="name" id="username" maxlength="30" name="username">
                                 </div>
+
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <span class="signUpSpan input-group-text" id="email">@</span>
                                     </div>
                                     <label for="loginemail" class="sr-only">Email:</label>
                                     <input type="email" class="form-control" placeholder="Email" aria-label="Email"
-                                        aria-describedby="email" id="loginemail" maxlength="50">
+                                        aria-describedby="email" id="signUpEmail" maxlength="50" name="signUpEmail">
                                 </div>
+
                                 <div class="input-group mb-3">
                                     <div class="signUpSpan input-group-prepend">
                                         <span class="signUpSpan input-group-text" id="password">&#128274</span>
                                     </div>
                                     <label for="password" class="sr-only">Password:</label>
                                     <input type="password" class="form-control" placeholder="Enter a password"
-                                        aria-label="Password" aria-describedby="password" id="password" maxlength="30">
+                                        aria-label="Password" aria-describedby="password" id="password" maxlength="30"
+                                        name="password">
                                 </div>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
@@ -109,7 +113,7 @@
                                     <label for="confirmPassword" class="sr-only">Confirm Password:</label>
                                     <input type="password" class="form-control" placeholder="Confirm password"
                                         aria-label="Username" aria-describedby="confirmPassword" id="confirmPassword"
-                                        maxlength="30">
+                                        maxlength="30" name="confirmPassword">
                                 </div>
                             </div>
                             <div class="modal-footer">
@@ -223,9 +227,6 @@
                     </div>
                 </div>
             </form>
-
-
-
         </div>
     </div>
 
@@ -249,7 +250,10 @@
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
     </script>
     <!-- //icon library -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+    <script src="index.js"></script>
 </body>
 
 
