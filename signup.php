@@ -98,7 +98,9 @@ if($results){
     echo '<div class="alert alert-danger">That Email address is already registered. Do you want to log in?</div>';  exit;
 }
 //Create a unique  activation code
-
+//bin2hex convert binary to hexadecimal
+//openssl_random_pseudo_bytes(nb of bytes) return a random combination of bytes
+$activationKey=bin2hex(openssl_random_pseudo_bytes(16));
     //byte: unit of data = 8 bits
     //bit: 0 or 1
     //16 bytes = 16*8 = 128 bits
@@ -107,10 +109,19 @@ if($results){
     //32 characters
 
 //Insert user details and activation code in the users table
-
-
-
+$sql = "INSERT into users ('username','email','password','activation') 
+VALUES ('$username','$email','$password','$activationKey')";
+$result = mysqli_query($link, $sql);
+if(!$result){
+    echo '<div class="alert alert-danger">There was an internal error. Please try again later. </div>'; 
+    exit;
+}
 //Send the user an email with a link to activate.php with their email and activation code
-
+//Send the user an email with a link to activate.php with their email and activation code
+$message = "Please click on this link to activate your account:\n\n";
+$message .= "http://bike.pack/Notes/activate.php?email=" . urlencode($email) . "&key=$activationKey";
+if(mail($email, 'Confirm your Registration', $message, 'From:'.'contact@notes.com')){
+       echo "<div class='alert alert-success'>Thank you for joining us ! A confirmation email has been sent to $email. Please click on the activation link to activate your account.</div>";
+}
         
         ?>
