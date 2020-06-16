@@ -1,3 +1,14 @@
+<?php
+session_start();
+include('connection.php');
+
+//logout
+include('logout.php');
+
+//remember me
+include('remember.php');
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -149,22 +160,23 @@
                                     </div>
                                     <label for="loginemail" class="sr-only">Email:</label>
                                     <input type="email" class="form-control" placeholder="Email" aria-label="Email"
-                                        aria-describedby="email" id="loginemail" maxlength="50">
+                                        aria-describedby="email" id="loginemail" name="loginemail" maxlength="50">
                                 </div>
                                 <!-- Password login -->
                                 <div class="input-group mb-3">
                                     <div class="signUpSpan input-group-prepend">
-                                        <span class="signUpSpan input-group-text" id="password">&#128274</span>
+                                        <span class="signUpSpan input-group-text">&#128274</span>
                                     </div>
                                     <label for="password" class="sr-only">Password:</label>
                                     <input type="password" class="form-control" placeholder="Password"
-                                        aria-label="Password" aria-describedby="password" id="password" maxlength="30">
+                                        aria-label="Password" aria-describedby="password" id="loginpassword"
+                                        name="loginpassword" maxlength="30">
                                 </div>
                             </div>
                             <div class="loginCheckBoxContainer">
                                 <!-- remember me checkbox -->
                                 <div class="form-check loginCheck">
-                                    <input type="checkbox" class="form-check-input">
+                                    <input type="checkbox" class="form-check-input" name="rememberMe">
                                     <label class="form-check-label" for="rememberMe">Remember Me</label>
                                 </div>
                                 <!-- Forgot password link -->

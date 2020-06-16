@@ -109,11 +109,12 @@ $activationKey=bin2hex(openssl_random_pseudo_bytes(16));
     //32 characters
 
 //Insert user details and activation code in the users table
-$sql = "INSERT into users ('username','email','password','activation') 
+$sql = "INSERT into users (`username`, `email`, `password`, `activation`) 
 VALUES ('$username','$email','$password','$activationKey')";
 $result = mysqli_query($link, $sql);
 if(!$result){
     echo '<div class="alert alert-danger">There was an internal error. Please try again later. </div>'; 
+    echo '<div class="alert alert-danger">' . mysqli_error($link) . '</div>';
     exit;
 }
 //Send the user an email with a link to activate.php with their email and activation code
@@ -123,5 +124,20 @@ $message .= "http://bike.pack/Notes/activate.php?email=" . urlencode($email) . "
 if(mail($email, 'Confirm your Registration', $message, 'From:'.'contact@notes.com')){
        echo "<div class='alert alert-success'>Thank you for joining us ! A confirmation email has been sent to $email. Please click on the activation link to activate your account.</div>";
 }
-        
+
+//BECAUSE I CANT SEND EMAIL FROM MY APACHE SERVER
+//I RUN THIS QUERY TO SET THE ACTIVATION FIELD TO ACTIVATED SO THAT PEOPLE CAN LOG IN
+//FOR DEVELOPMENT PURPOSES
+//Run query: set activation field to "activated" for the provided email
+$sql = "UPDATE users SET activation='activated' WHERE (email='$email' AND activation='$activationKey') LIMIT 1";
+$result = mysqli_query($link, $sql);
+if(mysqli_affected_rows($link) == 1){
+    echo '<div class="alert alert-success">Your account has been activated.</div>';
+       
+}else{
+    //Show error message
+    echo '<div class="alert alert-danger">Your account could not be activated. Please try again later.</div>';
+    echo '<div class="alert alert-danger">' . mysqli_error($link) . '</div>';
+}
+
         ?>

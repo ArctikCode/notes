@@ -19,7 +19,7 @@ $("#signUpForm").submit(function (event) {
     },
     error: function () {
       $("#signUpMessage").html(
-        "<div class='alert alert-danger'>connection Error.</div>"
+        "<div class='alert alert-danger'>Connection Error.</div>"
       );
     },
   });
@@ -27,13 +27,31 @@ $("#signUpForm").submit(function (event) {
 
 //Ajax Call for the login form
 //Once the form is submitted
-
-//prevent default php processing
-
-//collect user inputs
-
-//    console.log(datatopost);
-//send them to login.php using AJAX
+$("#logInForm").submit(function (event) {
+  //prevent default php processing
+  event.preventDefault();
+  //collect user inputs
+  var datatopost = $(this).serializeArray();
+  //    console.log(datatopost);
+  //send them to login.php using AJAX
+  $.ajax({
+    url: "login.php",
+    type: "POST",
+    data: datatopost,
+    success: function (data) {
+      if (data == "success") {
+        window.location = "mainPageLoggedIn.php";
+      } else {
+        $("#logInMessage").html(data);
+      }
+    },
+    error: function () {
+      $("#loginmessage").html(
+        "<div class='alert alert-danger'>Connection Error.</div>"
+      );
+    },
+  });
+});
 
 //Ajax Call for the forgot password form
 //Once the form is submitted
