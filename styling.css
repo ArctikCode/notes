@@ -25,11 +25,12 @@ body {
 }
 
 /*NAVBAR Styling*/
-#userInfo {
+p#userInfo {
     color: white;
     padding: 1rem;
     padding-left: 0px;
     margin-bottom: 0px !important;
+    margin-right: 1rem;
 }
 
 

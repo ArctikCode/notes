@@ -55,10 +55,24 @@ $("#logInForm").submit(function (event) {
 
 //Ajax Call for the forgot password form
 //Once the form is submitted
-
-//prevent default php processing
-
-//collect user inputs
-
-//    console.log(datatopost);
-//send them to signup.php using AJAX
+$("#forgotPasswordForm").submit(function (event) {
+  //prevent default php processing
+  event.preventDefault();
+  //collect user inputs
+  var datatopost = $(this).serializeArray();
+  //    console.log(datatopost);
+  //send them to forgotpassword.php using AJAX
+  $.ajax({
+    url: "forgotpassword.php",
+    type: "POST",
+    data: datatopost,
+    success: function (data) {
+      $("#forgotPasswordMessage").html(data);
+    },
+    error: function () {
+      $("#forgotPasswordMessage").html(
+        "<div class='alert alert-danger'>Connection Error.</div>"
+      );
+    },
+  });
+});

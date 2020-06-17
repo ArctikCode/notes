@@ -1,3 +1,11 @@
+<?php
+@session_start();
+if(!isset($_SESSION['user_id'])){
+    header("location: index.php");
+}
+?>
+
+
 <!doctype html>
 <html lang="en">
 
@@ -43,59 +51,63 @@
                     <a class="nav-link" href="#">My Notes</a>
                 </li>
             </ul>
-            <p id="userInfo">Logged in as <b>$username</b></p>
-            <button class="btn btn-outline-light my-2 my-sm-0" href="#" type=" button">Log Out</button>
+
+            <p id="userInfo">Logged in as <b><?php echo $_SESSION['username']?></b></p>
+            <a class="btn btn-outline-light my-2 my-sm-0" href="index.php?logout=1" type=" button" name="logout"">Log out</a>
+            
         </div>
     </nav>
 
 
     <!-- Note container -->
-    <div class="container" id="noteContainer">
-        <div class="row">
-            <div class="offset-md-3 col-md-6 ">
-                <!-- Button div -->
-                <div class="buttonDiv">
-                    <button id="addNote" class="btn btn-secondary btn-lg" href="#" type=" button">Add a Note</button>
-                    <button id="editNote" class="btn btn-secondary btn-lg float-right" href="#"
-                        type=" button">Edit</button>
-                    <button id="doneNote" class="btn btn-dark btn-lg float-right" href="#" type=" button">Done</button>
-                    <button id="allNote" class="btn btn-secondary btn-lg" href="#" type=" button">All
-                        Notes</button>
+    <div class=" container" id="noteContainer">
+                <div class="row">
+                    <div class="offset-md-3 col-md-6 ">
+                        <!-- Button div -->
+                        <div class="buttonDiv">
+                            <button id="addNote" class="btn btn-secondary btn-lg" href="#" type=" button">Add a
+                                Note</button>
+                            <button id="editNote" class="btn btn-secondary btn-lg float-right" href="#"
+                                type=" button">Edit</button>
+                            <button id="doneNote" class="btn btn-dark btn-lg float-right" href="#"
+                                type=" button">Done</button>
+                            <button id="allNote" class="btn btn-secondary btn-lg" href="#" type=" button">All
+                                Notes</button>
+                        </div>
+                        <!-- Text Input Div-->
+                        <div id="notePad">
+                            <textarea cols="50" rows="10"></textarea>
+                        </div>
+                        <!-- Notes Div  -->
+                        <div id="notes" class="notes">
+                            <!-- Ajax call to retrieve the database -->
+                        </div>
+                    </div>
                 </div>
-                <!-- Text Input Div-->
-                <div id="notePad">
-                    <textarea cols="50" rows="10"></textarea>
-                </div>
-                <!-- Notes Div  -->
-                <div id="notes" class="notes">
-                    <!-- Ajax call to retrieve the database -->
-                </div>
+        </div>
+
+
+
+        <!-- FOOTER -->
+        <div class="footer text-secondary">
+            <div class="container">
+                <p>ArctikCode &copy <?php $thisYear = date("Y"); echo $thisYear; ?></p>
             </div>
         </div>
-    </div>
 
-
-
-    <!-- FOOTER -->
-    <div class="footer text-secondary">
-        <div class="container">
-            <p>ArctikCode &copy <?php $thisYear = date("Y"); echo $thisYear; ?></p>
-        </div>
-    </div>
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
-    </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
-    </script>
-    <!-- //icon library -->
-    <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+        </script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+            integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
+        </script>
+        <!-- //icon library -->
+        <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
 </body>
 
 

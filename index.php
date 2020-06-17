@@ -1,12 +1,12 @@
 <?php
-session_start();
+@session_start();
 include('connection.php');
+//remember me
+include('remember.php');
 
 //logout
 include('logout.php');
 
-//remember me
-include('remember.php');
 ?>
 
 <!doctype html>
@@ -223,14 +223,15 @@ include('remember.php');
                                     </div>
                                     <label for="forgotPasswordemail" class="sr-only">Email:</label>
                                     <input type="email" class="form-control" placeholder="Email" aria-label="Email"
-                                        aria-describedby="email" id="loginemail" maxlength="50">
+                                        aria-describedby="email" id="forgotPasswordemail" name="forgotPasswordemail"
+                                        maxlength="50">
                                 </div>
 
                             </div>
 
                             <!-- submit and cancel button -->
                             <div class="modal-footer loginFooter">
-                                <button type="submit" name="login" class="btn btn-secondary">Send me my
+                                <button type="submit" name="forgotPasswordemail" class="btn btn-secondary">Send me my
                                     password</button>
                                 <button type="button" class="btn btn-outlined-secondary"
                                     data-dismiss="modal">Cancel</button>
