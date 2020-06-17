@@ -49,10 +49,10 @@ $time = time() - 86400;
 $user_id = mysqli_real_escape_string($link, $user_id);
 $key = mysqli_real_escape_string($link, $key);
     //Run Query: Check combination of user_id & key exists and less than 24h old
-$sql = "SELECT user_id FROM forgotpassword WHERE rkey='$key' AND user_id='$user_id' AND time > '$time' AND status='pending'";
+$sql = "SELECT user_id FROM forgotpassword WHERE forgot_password_key='$key' AND user_id='$user_id' AND time > '$time' AND status='pending'";
 $result = mysqli_query($link, $sql);
 if(!$result){
-    echo '<div class="alert alert-danger">Error running the query!</div>'; exit;
+    echo '<div class="alert alert-danger">Error accessing your data</div>'; exit;
 }
 //If combination does not exist
 //show an error message
@@ -86,6 +86,18 @@ echo "
             </div>
         </div>
     </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
+    </script>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <!--Script for Ajax Call to storeresetpassword.php which processes form data-->
@@ -109,14 +121,16 @@ echo "
             error: function() {
                 $("#resultmessage").html(
                     "<div class='alert alert-danger'>There was an error with the Ajax Call. Please try again later.</div>"
-                    );
+                );
 
             }
 
         });
 
+
     });
     </script>
+
 </body>
 
 </html>

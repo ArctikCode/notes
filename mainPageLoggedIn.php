@@ -108,6 +108,7 @@ if(!isset($_SESSION['user_id'])){
         </script>
         <!-- //icon library -->
         <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+        <script src="mynotes.js"></script>
 </body>
 
 
