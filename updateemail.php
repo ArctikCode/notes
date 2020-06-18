@@ -23,7 +23,7 @@ $result = mysqli_query($link, $sql);
 $count = mysqli_num_rows($result);
 
 if($count == 1){
-    $row = mysqli_fetch_array($result, MYSQL_ASSOC); 
+    $row = mysqli_fetch_array($result, MYSQLI_ASSOC); 
     $email = $row['email']; 
 }else{
     echo "<div class='alert alert-danger'>There was an error retrieving the email from the database</div>";exit;   
@@ -40,7 +40,7 @@ if(!$result){
 }else{
     //send email with link to activatenewemail.php with current email, new email and activation code
     $message = "Please click on this link prove that you own this email:\n\n";
-$message .= "http://mynotes.thecompletewebhosting.com/activatenewemail.php?email=" . urlencode($email) . "&newemail=" . urlencode($newemail) . "&key=$activationKey";
+$message .= "http://bike.pack/Notes/activatenewemail.php?email=" . urlencode($email) . "&newemail=" . urlencode($newemail) . "&key=$activationKey";
 if(mail($newemail, 'Email Update for you Online Notes App', $message, 'From:'.'developmentisland@gmail.com')){
        echo "<div class='alert alert-success'>An email has been sent to $newemail. Please click on the link to prove you own that email address.</div>";
 }

@@ -87,7 +87,9 @@ if($count == 1){
                             </td>
                             <td><?php echo $username; ?></td>
                         </tr>
-                        <tr data-target="#updateEmail" data-toggle="modal" style="cursor:pointer">
+                        <!-- DESACTIVATION OFF THE EMAIL FONCTIONNALITIES -->
+                        <!-- <tr data-target="#updateEmail" data-toggle="modal" style="cursor:pointer"> -->
+                        <tr>
                             <td>@</td>
                             <td><?php echo $email ?></td>
                         </tr>
