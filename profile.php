@@ -1,3 +1,27 @@
+<?php
+session_start();
+if(!isset($_SESSION['user_id'])){
+    header("location: index.php");
+}
+include('connection.php');
+
+$user_id = $_SESSION['user_id'];
+
+//get username and email
+$sql = "SELECT * FROM users WHERE user_id='$user_id'";
+$result = mysqli_query($link, $sql);
+
+$count = mysqli_num_rows($result);
+
+if($count == 1){
+    $row = mysqli_fetch_array($result, MYSQLI_ASSOC); 
+    $username = $row['username'];
+    $email = $row['email']; 
+}else{
+    echo "There was an error retrieving the username and email from the database";   
+}
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -31,7 +55,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item ">
-                    <a class="nav-link" href="#">Profile <span class="sr-only">(current)</span></a>
+                    <a class="nav-link active" href="#">Profile <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Help</a>
@@ -39,12 +63,13 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Contact Us</a>
                 </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">My Notes</a>
+                <li class="nav-item ">
+                    <a class="nav-link" href="mainPageLoggedIn.php">My Notes</a>
                 </li>
             </ul>
-            <p id="userInfo">Logged in as <b>$username</b></p>
-            <button class="btn btn-outline-light my-2 my-sm-0" href="#" type=" button">Log Out</button>
+            <p id="userInfo">Logged in as <b><?php echo $username; ?></b></p>
+            <a class="btn btn-outline-light my-2 my-sm-0" href="index.php?logout=1" type=" button" name="logout">Log
+                out</a>
         </div>
     </nav>
 
@@ -60,15 +85,15 @@
                             <td>
                                 <ion-icon name="person-circle-outline" size="large"> </ion-icon>
                             </td>
-                            <td>Joe LaFritte</td>
+                            <td><?php echo $username; ?></td>
                         </tr>
                         <tr data-target="#updateEmail" data-toggle="modal" style="cursor:pointer">
                             <td>@</td>
-                            <td>Jo@patate.fr</td>
+                            <td><?php echo $email ?></td>
                         </tr>
                         <tr data-target="#updatePassword" data-toggle="modal" style="cursor:pointer">
                             <td>&#128274</td>
-                            <td>oooooooooooo</td>
+                            <td>password</td>
                         </tr>
                     </table>
                 </div>
@@ -90,7 +115,7 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <!-- LOGIN FORM -->
+                    <!-- Update Name FORM -->
                     <div class="modal-body updateNameModal">
                         <!-- empty div for the reception of the error or information message -->
                         <div id="updateNameMessage"></div>
@@ -102,14 +127,15 @@
                                 </span>
                             </div>
                             <label for="username" class="sr-only">Name :</label>
-                            <input type="text" class="form-control" placeholder="New Name" aria-label="Name"
-                                aria-describedby="name" id="username" maxlength="30">
+                            <input type="text" name="username" class="form-control"
+                                placeholder="<?php echo $username; ?>" aria-label="Name" aria-describedby="name"
+                                id="username" maxlength="30">
                         </div>
                     </div>
 
                     <!-- login and cancel button -->
                     <div class="modal-footer loginFooter">
-                        <button type="submit" name="login" class="btn btn-secondary">Save</button>
+                        <button type="submit" name="updateusername" class="btn btn-secondary">Save</button>
                         <button type="button" class="btn btn-outlined-secondary" data-dismiss="modal">Cancel</button>
                     </div>
                 </div>
@@ -128,7 +154,7 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <!-- LOGIN FORM -->
+                    <!-- update email FORM -->
                     <div class="modal-body updateEmailModal">
                         <!-- empty div for the reception of the error or information message -->
                         <div id="updateEmailMessage"></div>
@@ -137,15 +163,15 @@
                             <div class="input-group-prepend">
                                 <span class="signUpSpan input-group-text" id="email">@</span>
                             </div>
-                            <label for="loginemail" class="sr-only">Email:</label>
-                            <input type="email" class="form-control" placeholder="Enter a new Email address"
-                                aria-label="Email" aria-describedby="email" id="loginemail" maxlength="50">
+                            <label for="updateEmail" class="sr-only">Email:</label>
+                            <input type="email" class="form-control" name="email" placeholder="<?php echo $email ?>"
+                                aria-label="Email" aria-describedby="email" id="updateEmail" maxlength="50">
                         </div>
                     </div>
 
-                    <!-- login and cancel button -->
+                    <!-- update email and cancel button -->
                     <div class="modal-footer loginFooter">
-                        <button type="submit" name="login" class="btn btn-secondary">Save</button>
+                        <button type="submit" name="updateUserEmail" class="btn btn-secondary">Save</button>
                         <button type="button" class="btn btn-outlined-secondary" data-dismiss="modal">Cancel</button>
                     </div>
                 </div>
@@ -174,32 +200,33 @@
                                 <span class="signUpSpan input-group-text" id="password">&#128274</span>
                             </div>
                             <label for="currentPassword" class="sr-only"> Current Password:</label>
-                            <input type="password" class="form-control" placeholder="Enter your current password"
-                                aria-label="currentPassword" aria-describedby="currentPassword" id="currentPassword"
-                                maxlength="30">
+                            <input type="password" class="form-control" name="currentpassword"
+                                placeholder="Enter your current password" aria-label="currentPassword"
+                                aria-describedby="currentPassword" id="currentPassword" maxlength="30">
                         </div>
                         <div class="input-group mb-3">
                             <div class="signUpSpan input-group-prepend">
                                 <span class="signUpSpan input-group-text" id="password">&#128274</span>
                             </div>
                             <label for="newPassword" class="sr-only">New Password:</label>
-                            <input type="password" class="form-control" placeholder="Enter a new password"
-                                aria-label="newPassword" aria-describedby="newPassword" id="newPassword" maxlength="30">
+                            <input type="password" class="form-control" name="password"
+                                placeholder="Enter a new password" aria-label="newPassword"
+                                aria-describedby="newPassword" id="newPassword" maxlength="30">
                         </div>
                         <div class="input-group mb-3">
                             <div class="signUpSpan input-group-prepend">
                                 <span class="signUpSpan input-group-text" id="password">&#128274</span>
                             </div>
                             <label for="ConfirmNewPassword" class="sr-only">Confirm New Password:</label>
-                            <input type="password" class="form-control" placeholder="Confirm your new password"
-                                aria-label="ConfirmNewPassword" aria-describedby="ConfirmNewPassword"
-                                id="ConfirmNewPassword" maxlength="30">
+                            <input type="password" class="form-control" name="password2"
+                                placeholder="Confirm your new password" aria-label="ConfirmNewPassword"
+                                aria-describedby="ConfirmNewPassword" id="ConfirmNewPassword" maxlength="30">
                         </div>
                     </div>
 
                     <!-- login and cancel button -->
                     <div class="modal-footer loginFooter">
-                        <button type="submit" name="login" class="btn btn-secondary">Save</button>
+                        <button type="submit" name="updatePassword" class="btn btn-secondary">Save</button>
                         <button type="button" class="btn btn-outlined-secondary" data-dismiss="modal">Cancel</button>
                     </div>
                 </div>
@@ -225,7 +252,9 @@
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
     </script>
     <!-- //icon library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+    <script src="profile.js"></script>
 </body>
 
 
